@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" contentType="text/html">
+
+	<html>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<!-- Disabling cache in browser side -->
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+
+	<title>Practica</title>
+	<link rel="shortcut icon" href="#{request.contextPath}/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/css/custom.css" />
+	
+</h:head>
+
+
+<h:body>
+
+	<div class="header">
+	
+		<ui:include src="menu.xhtml" />
+		<!-- INICIO AREA DE LOS MENSAJES -->
+		<p:growl id="growl" globalOnly="false" showDetail="true"
+			sticky="true" autoUpdate="true">
+		</p:growl>
+	</div>
+
+
+	<p:dialog
+		style="overflow:hidden;background:transparent;box-shadow:none;border:0px;"
+		position="right,bottom" width="100px" height="100px"
+		widgetVar="statusDialog" modal="false" draggable="false"
+		closable="false" resizable="false" showHeader="false">
+		<p:graphicImage value="/images/loading.gif" />
+	</p:dialog>
+
+
+	<div class="clearfix">
+		<div class="body"
+			style="margin-left: 10px !important; margin-right: 10px !important;">
+			<p:spacer height="40"></p:spacer>
+			<ui:insert name="body" />
+		</div>
+	</div>
+
+
+
+	<p:ajaxStatus onstart="PF('statusDialog').show()"
+		onsuccess="PF('statusDialog').hide()" />
+
+</h:body>
+	</html>
+</f:view>

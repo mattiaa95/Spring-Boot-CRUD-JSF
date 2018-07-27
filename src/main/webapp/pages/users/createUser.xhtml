@@ -1,0 +1,54 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/layout/template.xhtml">
+
+	<ui:define name="body">
+		<h:form>
+    <p:panel id="panel" header="New User">
+ 
+        <p:messages id="msgs" />
+ 
+        <h:panelGrid columns="3" cellpadding="5">
+            <p:outputLabel for="name" value="name:" />
+            <p:inputText id="name" value="#{userManagedBean.userDto.name}" required="true" label="name">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="name" display="icon" />
+ 
+            <p:outputLabel for="username" value="Username:" />
+            <p:inputText id="username" value="#{userManagedBean.userDto.username}" label="username" required="true">
+                <f:validateLength minimum="2" />
+                <p:ajax update="msgUsername" event="keyup" />
+            </p:inputText>
+            <p:message for="username" id="msgUsername" display="icon" />
+            
+            <p:outputLabel for="date" value="Fecha de nacimiento:" />
+        		<p:calendar id="date" value="#{userManagedBean.userDto.date}">
+            	<p:ajax event="dateSelect" listener="#{userManagedBean.userDto.date}" update="msgDate" />
+        	</p:calendar>
+            <p:message for="date" id="msgDate" display="icon" />
+            
+          <p:outputLabel for="email" value="Email:" />
+            <p:inputText id="email" value="#{userManagedBean.userDto.email}" label="email" required="true">
+                <f:validateLength minimum="2" />
+                <p:ajax update="msgEmail" event="keyup" />
+            </p:inputText>
+            <p:message for="email" id="msgEmail" display="icon" />
+            
+          <p:outputLabel for="document" value="Document:" />
+            <p:inputText id="document" value="#{userManagedBean.userDto.document}" label="document" required="true">
+                <f:validateLength minimum="2" />
+                <p:ajax update="msgDocument" event="keyup" />
+            </p:inputText>
+            <p:message for="document" id="msgDocument" display="icon" />
+            
+ 
+        </h:panelGrid>
+ 
+        <p:commandButton value="Save" update="panel" actionListener="#{userManagedBean.save}" icon="ui-icon-check" />
+    </p:panel>
+</h:form>
+	</ui:define>
+</ui:composition> 

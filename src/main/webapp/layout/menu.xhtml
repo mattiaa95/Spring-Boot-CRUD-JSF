@@ -1,0 +1,24 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="menu">
+		<div class="clearfix">
+			<p:menubar>
+				<p:menuitem>
+					<h:link outcome="/index.xhtml">
+						<h:graphicImage url="/images/logo.png" height="15px" />
+					</h:link>
+				</p:menuitem>
+				<p:submenu label="Usuario" icon="fa fa-user" style="margin-top: 14px">
+           		 <p:menuitem value="Create User" url="/pages/users/createUser.xhtml"/>
+           		  <p:menuitem value="Delete User" url="/pages/users/deleteUser.xhtml"/>
+           		 <p:menuitem value="List Users" url="/pages/users/listUser.xhtml"/>
+				</p:submenu>
+			</p:menubar>
+		</div>
+	</h:form>
+
+</ui:composition>

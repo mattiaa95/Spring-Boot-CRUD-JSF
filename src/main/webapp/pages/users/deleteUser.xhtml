@@ -1,0 +1,28 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/layout/template.xhtml">
+
+	<ui:define name="body">
+		<h:form>
+    <p:panel id="panel" header="Delete User">
+ 
+        <p:messages id="msgs" />
+ 
+        <h:panelGrid columns="3" cellpadding="5">
+  
+            <p:outputLabel for="username" value="Username:" />
+            <p:inputText id="username" value="#{userManagedBean.userDto.username}" label="username" required="true">
+                <f:validateLength minimum="2" />
+                <p:ajax update="msgUsername" event="keyup" />
+            </p:inputText>
+            <p:message for="username" id="msgUsername" display="icon" />
+         
+        </h:panelGrid>
+ 
+        <p:commandButton value="Dalete" update="panel" actionListener="#{userManagedBean.Delete}" icon="ui-icon-check" />
+    </p:panel>
+</h:form>
+	</ui:define>
+</ui:composition> 
